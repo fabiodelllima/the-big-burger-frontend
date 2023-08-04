@@ -1,0 +1,60 @@
+@import '../../../styles/index.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  border-radius: 5px;
+  border: 2px solid $grey-100;
+
+  .button {
+    @extend .medium;
+    color: $white;
+    border: none;
+    border-radius: 8px;
+    background-color: $grey-400;
+    transition: background-color 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(1.1);
+    }
+  }
+
+  &:hover {
+    border: 2px solid $color-primary;
+
+    .button {
+      background-color: $color-primary;
+    }
+  }
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // object-fit: cover;
+  // object-position: top center;
+  height: 150px;
+  background-color: $grey-0;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.name {
+  @extend .heading-3;
+}
+
+.category {
+  @extend .body;
+}
+
+.price {
+  @extend .body-600;
+}
