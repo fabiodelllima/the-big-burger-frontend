@@ -1,0 +1,99 @@
+@import '../../styles/index.scss';
+
+.header {
+  width: 100%;
+  padding: 20px;
+  background-color: $grey-0;
+
+  // border: 2px dashed deeppink;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  // border: 2px dashed deepskyblue;
+}
+
+.cartButton {
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+  }
+}
+
+.cartQuantity {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 900;
+  // font-style: normal;
+  // line-height: 0px;
+  color: $white;
+  padding: 4px 6px;
+  border-radius: 8px;
+  background-color: $color-primary;
+}
+
+.searchContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  // border: 2px dashed darkolivegreen;
+}
+
+.searchInput {
+  @extend .input;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // flex-shrink: 0;
+  width: 100%;
+  // padding: 20px;
+  // width: 382px;
+  padding: 0px 10px 0px 15px;
+  height: 60px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid $grey-100;
+  background: $white;
+
+  &::placeholder {
+    font-family: 'Inter', sans-serif;
+    color: $grey-100;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: normal;
+  }
+}
+
+.searchButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px;
+  height: 40px;
+  color: $white;
+  border-radius: 8px;
+  border: 2px solid $color-primary;
+  background: $color-primary;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+  }
+}
