@@ -1,11 +1,12 @@
-import { HomePage } from "./pages/HomePage"
+import './styles/index.scss';
+import { HomePage } from './pages/HomePage';
 
-function App() {
-  return (
-    <>
-      <HomePage />
-    </>
-  )
-}
+const App = () => {
+	return (
+		<>
+			<HomePage />
+		</>
+	);
+};
 
-export default App
+export default App;
