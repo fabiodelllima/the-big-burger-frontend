@@ -34,10 +34,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // object-fit: cover;
-  // object-position: top center;
+  object-fit: cover;
   height: 150px;
   background-color: $grey-0;
+}
+
+.img[data-name='Fanta Guaraná'] {
+  object-position: 0 -30px;
+}
+
+.img[data-name='Coca-Cola'] {
+  object-position: 0 -25px;
+}
+
+.img[data-name='Milkshake Ovomaltine'] {
+  object-position: 0 -10px;
 }
 
 .description {
