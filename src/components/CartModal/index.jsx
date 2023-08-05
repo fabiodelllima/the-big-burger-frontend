@@ -28,16 +28,20 @@ export const CartModal = ({ cartList, onClose }) => {
 				</ul>
 			</div>
 			<div className={styles.footer}>
-				<div className={styles.totalContainer}>
-					<span className={styles.totalTitle}>Total</span>
-					<span className={styles.totalQuantity}>
-						{total.toLocaleString('pt-BR', {
-							style: 'currency',
-							currency: 'BRL',
-						})}
-					</span>
+				<div className={styles.footerSubcontainer}>
+					<div className={styles.totalContainer}>
+						<span className={styles.totalTitle}>Total</span>
+						<span className={styles.totalQuantity}>
+							{total.toLocaleString('pt-BR', {
+								style: 'currency',
+								currency: 'BRL',
+							})}
+						</span>
+					</div>
+					<button className={styles.removeButton}>
+						Remover todos
+					</button>
 				</div>
-				<button className={styles.removeButton}>Remover todos</button>
 			</div>
 		</div>
 	);
