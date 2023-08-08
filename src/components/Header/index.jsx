@@ -1,12 +1,21 @@
 import { useState } from 'react';
-import Cart from '../../assets/cart.svg';
 import styles from './style.module.scss';
+import Cart from '../../assets/cart.svg';
 import Logo from '../../assets/Logo.svg';
-import { MdSearch, MdShoppingCart } from 'react-icons/md';
-import { CartModal } from '../CartModal';
+import { MdSearch } from 'react-icons/md';
 
-export const Header = ({ onCartButtonClick }) => {
+export const Header = ({ onCartButtonClick, cartQuantity, productList, setFilteredProductList }) => {
 	const [value, setValue] = useState('');
+
+	const updateProductList = (e) => {
+		e.preventDefault();
+
+		const filteredProductList = productList.filter((product) => {
+			return product.name.toLowerCase().includes(value.toLowerCase());
+		});
+
+		setFilteredProductList(filteredProductList);
+	}
 
 	return (
 		<header className={styles.header}>
@@ -14,21 +23,21 @@ export const Header = ({ onCartButtonClick }) => {
 				<div className={styles.imgContainer}>
 					<img src={Logo} alt='Logo Kenzie Burguer' />
 				</div>
-
 				<div className={styles.test}>
 					<button 
 						className={styles.cartButton} 
 						onClick={onCartButtonClick}
-					>
-						{/* <MdShoppingCart size={21} /> */}
-						<img className={styles.cartImg} src={Cart} alt='' />
-						<span className={styles.cartQuantity}>0</span>
+					>						
+						<img className={styles.cartImg} src={Cart} />
+						<span className={styles.cartQuantity}>{cartQuantity}</span>
 					</button>
 				</div>
-
 			</div>
 			<div className={styles.searchContainer}>
-				<form className={styles.formContainer}>
+				<form 
+					className={styles.formContainer} 
+					onSubmit={(e) => updateProductList(e)}
+				>
 					<input
 						className={styles.searchInput}
 						type='text'
