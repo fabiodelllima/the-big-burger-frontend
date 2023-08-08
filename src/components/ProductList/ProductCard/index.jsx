@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product, onAddToCart }) => {
 	return (
 		<li className={styles.container}>
 			<div className={styles.imgContainer}>
@@ -20,7 +20,12 @@ export const ProductCard = ({ product }) => {
 						currency: 'BRL',
 					})}
 				</span>
-				<button className={styles.button}>Adicionar</button>
+				<button 
+					className={styles.button} 
+					onClick={() => onAddToCart(product)}
+				>
+					Adicionar
+				</button>
 			</div>
 		</li>
 	);

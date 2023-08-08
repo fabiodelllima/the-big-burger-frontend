@@ -52,17 +52,22 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  // justify-content: center;
+  // align-items: flex-start;
   gap: 18px;
   width: 375px;
-  height: 200px;
-  padding: 0 20px;
+  height: 280px;
   background-color: $white;
+  // padding: 0 20px;
+
+  overflow: auto;
+  // border: 4px dashed red;  
 }
 
+
+
 .productList {
-  padding: 20px;
+  // padding: 20px;
   // border: 2px solid $grey-100;
 }
 
