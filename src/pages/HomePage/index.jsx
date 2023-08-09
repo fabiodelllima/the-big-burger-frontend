@@ -1,5 +1,7 @@
 import styles from './style.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { productsApi } from '../../services/api';
 import { Header } from '../../components/Header';
 import { CartModal } from '../../components/CartModal';
@@ -21,13 +23,26 @@ export const HomePage = () => {
 		setIsVisible(false);
 	};
 
+	const toastConfig = {
+		position: 'top-center',		
+		autoClose: 3 * 1000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+	};
+
 	const addToCart = (product) => {
 		const isProductInCart = cartList.some((item) => item.id === product.id);
 
 		if (!isProductInCart) {
 			setCartList([...cartList, 
 				{ ...product, quantity: 1}
-			]);	
+			]);
+			toast.success(`
+				${product.name} foi adicionado ao carrinho`, 
+				toastConfig
+			);
 		} else {
 			const updatedCart = cartList.map((item) => item.id === product.id 
 				? { ...item, quantity: item.quantity + 1 } 
@@ -35,7 +50,12 @@ export const HomePage = () => {
 			);
 
 			setCartList(updatedCart);
+			toast.success(`
+				${product.name} foi adicionado novamente ao carrinho`, 
+				toastConfig
+			);
 		}
+
 		setCartQuantity(cartQuantity + 1);
 		localStorage.setItem('cartList', JSON.stringify(cartList));
 	};
@@ -71,7 +91,7 @@ export const HomePage = () => {
 					);
 					setCartQuantity(userProductQuantity);
 				}
-				
+
 			} catch (error) {
 				console.log(error);
 			}
@@ -79,13 +99,6 @@ export const HomePage = () => {
 
 		getProducts();
 	}, []);
-
-	// // useEffect montagem - carrega os produtos da API e joga em productList
-	// useEffect atualização - salva os produtos no localStorage (carregar no estado)
-	// // adição, exclusão, e exclusão geral do carrinho
-	// // renderizações condições e o estado para exibir ou não o carrinho
-	// // filtro de busca
-	// estilizar tudo com sass de forma responsiva
 
 	return (
 		<>
