@@ -37,6 +37,7 @@ export const HomePage = () => {
 			setCartList(updatedCart);
 		}
 		setCartQuantity(cartQuantity + 1);
+		localStorage.setItem('cartList', JSON.stringify(cartList));
 	};
 
 	const removeFromCart = (product) => {
@@ -58,8 +59,19 @@ export const HomePage = () => {
 		const getProducts = async () => {
 			try {
 				const { data } = await productsApi.get('/products');
+				const userProductList = JSON.parse(localStorage.getItem('cartList'));
+				
 				setProductList(data);
 				setFilteredProductList(data);
+
+				if (userProductList) {
+					setCartList(userProductList);
+					const userProductQuantity = userProductList.reduce(
+						(prevValue, product) => prevValue + product.quantity, 0
+					);
+					setCartQuantity(userProductQuantity);
+				}
+				
 			} catch (error) {
 				console.log(error);
 			}
