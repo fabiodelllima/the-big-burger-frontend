@@ -9,7 +9,7 @@ export const CartModal = ({ cartList, onClose, onRemoveItem, removeAllItems, tot
 
 	return (
 		<div role='dialog' className={styles.container}>
-			<header className={styles.header}>
+			<div className={styles.header}>
 				<h2 className={styles.title}>Carrinho de compras</h2>
 				<button 
 					className={styles.closeButton}
@@ -19,8 +19,8 @@ export const CartModal = ({ cartList, onClose, onRemoveItem, removeAllItems, tot
 				>
 					<MdClose size={21} />
 				</button>
-			</header>
-			<main className={styles.main}>
+			</div>
+			<div className={styles.main}>
 				<ul className={styles.productList}>
 					{cartList.map((product) => (
 						<CartItemCard 
@@ -31,8 +31,8 @@ export const CartModal = ({ cartList, onClose, onRemoveItem, removeAllItems, tot
 						/>
 					))}
 				</ul>
-			</main>
-			<foooter className={styles.footer}>
+			</div>
+			<div className={styles.footer}>
 				<div className={styles.footerSubcontainer}>
 					<div className={styles.totalContainer}>
 						<span className={styles.totalTitle}>Total</span>
@@ -50,7 +50,7 @@ export const CartModal = ({ cartList, onClose, onRemoveItem, removeAllItems, tot
 						Remover todos
 					</button>
 				</div>
-			</foooter>
+			</div>
 		</div>
 	);
 };
