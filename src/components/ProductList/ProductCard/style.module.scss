@@ -3,7 +3,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  min-width: 300px;
   border-radius: 5px;
   border: 2px solid $grey-100;
 
