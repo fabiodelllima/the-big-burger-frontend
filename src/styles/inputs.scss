@@ -2,31 +2,21 @@
 
 .input {
   font-family: $font-primary;
+  color: $grey-100;
   font-weight: 400;
   font-size: 1rem;
-  font-style: normal;
-  line-height: normal;
-  color: $grey-300;
+  border: none;
+  outline-color: transparent;
 
   &::placeholder {
-    color: $grey-300;
-    // color: red;
-    font-family: $font-primary;
-    font-weight: 400;
-    font-size: 1rem;
-    font-style: normal;
-    line-height: normal;
+    color: $grey-100;
+    border: none;
+    outline-color: transparent;
+  }
 
-    &:focus {
-      // color: $grey-300;
-      // color: red;
-      font-family: $font-primary;
-      font-weight: 400;
-      font-size: 1rem;
-      font-style: normal;
-      line-height: normal;
-      outline-color: $grey-600;
-      border: 2px solid $grey-600;
-    }
+  &:focus {
+    color: $grey-300;
+    border: none;
+    outline-color: transparent;
   }
 }
