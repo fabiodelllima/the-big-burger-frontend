@@ -9,11 +9,9 @@ import { ProductList } from '../../components/ProductList';
 
 export const HomePage = () => {
 	const [productList, setProductList] = useState([]);
-	const [cartList, setCartList] = useState([]);
-	const [cartQuantity, setCartQuantity] = useState(0);
+	const [cartList, setCartList] = useState([]);	
 	const [isVisible, setIsVisible] = useState(false);	
-	const [search, setSearch] = useState('');
-	const [filteredProductList, setFilteredProductList] = useState(productList);
+	const [search, setSearch] = useState('');	
 
 	const handleCartButtonClick = () => {
 		setIsVisible(true);
@@ -25,7 +23,7 @@ export const HomePage = () => {
 
 	const toastConfig = {
 		position: 'top-center',		
-		autoClose: 3 * 1000,
+		autoClose: 1 * 1000,
 		hideProgressBar: false,
 		closeOnClick: true,
 		pauseOnHover: true,
@@ -33,14 +31,19 @@ export const HomePage = () => {
 	};
 
 	const addToCart = (product) => {
-		const isProductInCart = cartList.some((item) => item.id === product.id);
+		const toastAddItemMsg = `${product.name} foi adicionado ao carrinho`;
+		const toastAddSameItemMsg = `${product.name} foi adicionado novamente ao carrinho`;
+		
+		const isProductInCart = cartList.some((item) => 
+			item.id === product.id
+		);
 
 		if (!isProductInCart) {
 			setCartList([...cartList, 
 				{ ...product, quantity: 1}
-			]);
-			toast.success(`
-				${product.name} foi adicionado ao carrinho`, 
+			]);			
+			toast.success(
+				toastAddItemMsg, 
 				toastConfig
 			);
 		} else {
@@ -49,51 +52,77 @@ export const HomePage = () => {
 				: item
 			);
 
-			setCartList(updatedCart);
-			toast.success(`
-				${product.name} foi adicionado novamente ao carrinho`, 
+			setCartList(updatedCart);			
+			toast.success(
+				toastAddSameItemMsg,
 				toastConfig
 			);
 		}
-
-		setCartQuantity(cartQuantity + 1);
-		localStorage.setItem('cartList', JSON.stringify(cartList));
+		
+		// localStorage.setItem('cartList', JSON.stringify(cartList));
 	};
 
-	const removeFromCart = (product) => {
-		const updatedCart = cartList.filter((item) => item.id !== product.id);
-		setCartList(updatedCart);
-		setCartQuantity(cartQuantity - product.quantity);
+	const removeFromCart = (product) => {		
+		const toastRemoveItemMsg = `${product.name} foi removido do carrinho`;
+
+		if (product.quantity === 1) {
+			const updatedCart = cartList.filter((item) => 
+				item.id !== product.id
+			);
+			setCartList(updatedCart);
+			toast.success(
+				toastRemoveItemMsg, 
+				toastConfig
+			);
+		} else {
+			const updatedCart = cartList.map((item) => 
+				item.id === product.id 
+				? { ...item, quantity: item.quantity - 1 }
+				: item
+			);
+
+			setCartList(updatedCart);
+			toast.success(
+				toastRemoveItemMsg, 
+				toastConfig
+			);
+		}
 	};
 
 	const removeAllItems = () => {
-		setCartList([]);
-		setCartQuantity(0);
+		const toastRemoveAllItemsMsg = `Todos os produtos foram removidos do carrinho`;
+
+		if (cartList.length === 0) {
+			toast.error(`Não há produtos para remover`, toastConfig);
+		} else {
+			setCartList([]);		
+			toast.success(
+				toastRemoveAllItemsMsg,
+				toastConfig
+			);
+		}
 	}
 
 	const total = cartList.reduce((prevValue, product) => {
 		return prevValue + product.price * product.quantity;
+	}, 0);
+
+	const filteredProductList = productList.filter((product) => {
+		return product.name.toLowerCase().includes(search.toLowerCase());
+	});
+
+	const cartQuantity = cartList.reduce((prevValue, product) => {
+		return prevValue + product.quantity;
 	}, 0);
 	
 	useEffect(() => {
 		const getProducts = async () => {
 			try {
 				const { data } = await productsApi.get('/products');
-				const userProductList = JSON.parse(localStorage.getItem('cartList'));
-				
 				setProductList(data);
-				setFilteredProductList(data);
-
-				if (userProductList) {
-					setCartList(userProductList);
-					const userProductQuantity = userProductList.reduce(
-						(prevValue, product) => prevValue + product.quantity, 0
-					);
-					setCartQuantity(userProductQuantity);
-				}
-
 			} catch (error) {
 				console.log(error);
+				toast.error(`Ops! Ocorreu um erro`);
 			}
 		};
 
@@ -106,14 +135,15 @@ export const HomePage = () => {
 				onCartButtonClick={handleCartButtonClick} 
 				cartQuantity={cartQuantity}
 				setSearch={setSearch}
-				productList={productList} 
-				setFilteredProductList={setFilteredProductList}
 			/>
       <main className={styles.container}>
         <ProductList 
-					productList={filteredProductList} 
-					// productList={productList} 
-					onAddToCart={addToCart} 
+					productList={
+						search === '' 
+						? productList 
+						: filteredProductList
+					}
+					onAddToCart={addToCart}
 				/>
         { isVisible 
 					? (
