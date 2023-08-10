@@ -5,62 +5,60 @@
   flex-direction: row;
   width: 100%;
   padding: 20px;
-}
 
-.imgContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 100px;
-  border-radius: 5px;
-  background-color: $grey-100;
-
-  // border: 2px dashed deepskyblue;
-
-  .img {
-    height: 80px;
-  }
-}
-
-.subcontainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-left: 10px;
-  width: 100%;
-}
-
-.titleContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .title {
-    @extend .heading-3;
-  }
-
-  .removeItemButton {
+  .imgContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
-    background-color: transparent;
+    width: 150px;
+    height: 100px;
+    border-radius: 5px;
+    background-color: $grey-100;
 
-    &:hover {
-      cursor: pointer;
-      filter: brightness(1.2);
+    .img {
+      height: 80px;
     }
   }
-}
 
-.quantityContainer {
-  display: flex;
-  justify-content: flex-start;
+  .subcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 10px;
+    width: 100%;
 
-  .quantityTitle,
-  .quantity {
-    @extend .body;
-    padding-right: 4px;
+    .titleContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .title {
+        @extend .heading-3;
+      }
+
+      .removeItemButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: transparent;
+
+        &:hover {
+          cursor: pointer;
+          filter: brightness(1.2);
+        }
+      }
+    }
+  }
+
+  .quantityContainer {
+    display: flex;
+    justify-content: flex-start;
+
+    .quantityTitle,
+    .quantity {
+      @extend .body;
+      padding-right: 4px;
+    }
   }
 }

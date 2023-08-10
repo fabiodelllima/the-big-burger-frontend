@@ -28,44 +28,45 @@
       background-color: $color-primary;
     }
   }
-}
 
-.imgContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  object-fit: cover;
-  height: 150px;
-  background-color: $grey-0;
-}
 
-.img[data-name='Fanta Guaraná'] {
-  object-position: 0 -30px;
-}
+  .imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    height: 150px;
+    background-color: $grey-0;
 
-.img[data-name='Coca-Cola'] {
-  object-position: 0 -25px;
-}
+    .img[data-name='Fanta Guaraná'] {
+      object-position: 0 -30px;
+    }
 
-.img[data-name='Milkshake Ovomaltine'] {
-  object-position: 0 -10px;
-}
+    .img[data-name='Coca-Cola'] {
+      object-position: 0 -25px;
+    }
 
-.description {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-}
+    .img[data-name='Milkshake Ovomaltine'] {
+      object-position: 0 -10px;
+    }
+  }
 
-.name {
-  @extend .heading-3;
-}
+  .descriptionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
 
-.category {
-  @extend .body;
-}
+    .name {
+      @extend .heading-3;
+    }
 
-.price {
-  @extend .body-600;
+    .category {
+      @extend .body;
+    }
+
+    .price {
+      @extend .body-600;
+    }
+  }
 }

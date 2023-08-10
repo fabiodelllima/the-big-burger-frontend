@@ -11,7 +11,7 @@ export const ProductCard = ({ product, onAddToCart }) => {
 					data-name={product.name}
 				/>
 			</div>
-			<div className={styles.description}>
+			<div className={styles.descriptionContainer}>
 				<h3 className={styles.name}>
 					{product.name}
 				</h3>
