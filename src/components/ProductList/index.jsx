@@ -4,7 +4,7 @@ import { ProductCard } from './ProductCard';
 export const ProductList = ({ productList, onAddToCart }) => {
 	return (
 		<ul className={styles.container}>
-			{productList.map((product) => (
+			{ productList.map((product) => (
 				<ProductCard 
 					key={product.id} 
 					product={product} 

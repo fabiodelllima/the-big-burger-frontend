@@ -4,7 +4,8 @@ import { MdSearch } from 'react-icons/md';
 import Cart from '../../assets/cart.svg';
 import Logo from '../../assets/Logo.svg';
 
-export const Header = ({ onCartButtonClick, cartQuantity, setSearch }) => {
+export const Header = (
+	{ onCartButtonClick, cartQuantity, setSearch }) => {
 	const [value, setValue] = useState('');
 
 	const updateProductList = (e) => {
@@ -25,12 +26,17 @@ export const Header = ({ onCartButtonClick, cartQuantity, setSearch }) => {
 							onClick={onCartButtonClick}
 						>
 							<img className={styles.cartImg} src={Cart} />
-							<span className={styles.cartQuantity}>{cartQuantity}</span>
+							<span className={styles.cartQuantity}>
+								{cartQuantity}
+							</span>
 						</button>
 					</div>
 				</div>
 				<div className={styles.subContainerB}>
-					<form className={styles.formContainer} onSubmit={updateProductList}>
+					<form 
+						className={styles.formContainer} 
+						onSubmit={updateProductList}
+					>
 						<input
 							className={styles.searchInput}
 							type='text'
@@ -38,7 +44,10 @@ export const Header = ({ onCartButtonClick, cartQuantity, setSearch }) => {
 							onChange={(e) => setValue(e.target.value)}
 							placeholder='Digitar Pesquisa'
 						/>
-						<button className={styles.searchButton} type='submit'>
+						<button 
+							className={styles.searchButton} 
+							type='submit'
+						>
 							<MdSearch size={21} />
 						</button>
 					</form>

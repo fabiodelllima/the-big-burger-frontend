@@ -31,8 +31,12 @@ export const HomePage = () => {
 	};
 
 	const addToCart = (product) => {
-		const toastAddItemMsg = `${product.name} foi adicionado ao carrinho`;
-		const toastAddSameItemMsg = `${product.name} foi adicionado novamente ao carrinho`;
+		const toastAddItemMsg = `
+			${product.name} foi adicionado ao carrinho
+		`;
+		const toastAddSameItemMsg = `
+			${product.name} foi adicionado novamente ao carrinho
+		`;
 		
 		const isProductInCart = cartList.some((item) => 
 			item.id === product.id
@@ -47,7 +51,8 @@ export const HomePage = () => {
 				toastConfig
 			);
 		} else {
-			const updatedCart = cartList.map((item) => item.id === product.id 
+			const updatedCart = cartList.map((item) => 
+				item.id === product.id 
 				? { ...item, quantity: item.quantity + 1 } 
 				: item
 			);
@@ -58,12 +63,12 @@ export const HomePage = () => {
 				toastConfig
 			);
 		}
-		
-		// localStorage.setItem('cartList', JSON.stringify(cartList));
 	};
 
 	const removeFromCart = (product) => {		
-		const toastRemoveItemMsg = `${product.name} foi removido do carrinho`;
+		const toastRemoveItemMsg = `
+			${product.name} foi removido do carrinho
+		`;
 
 		if (product.quantity === 1) {
 			const updatedCart = cartList.filter((item) => 
@@ -90,12 +95,14 @@ export const HomePage = () => {
 	};
 
 	const removeAllItems = () => {
-		const toastRemoveAllItemsMsg = `Todos os produtos foram removidos do carrinho`;
+		const toastErrorMsg = 'Não há produtos para remover';
+		const toastRemoveAllItemsMsg = 
+			'Todos os produtos foram removidos do carrinho';
 
 		if (cartList.length === 0) {
-			toast.error(`Não há produtos para remover`, toastConfig);
+			toast.error(toastErrorMsg, toastConfig);
 		} else {
-			setCartList([]);		
+			setCartList([]);
 			toast.success(
 				toastRemoveAllItemsMsg,
 				toastConfig
@@ -122,7 +129,7 @@ export const HomePage = () => {
 				setProductList(data);
 			} catch (error) {
 				console.log(error);
-				toast.error(`Ops! Ocorreu um erro`);
+				toast.error('Ops! Ocorreu um erro', toastConfig);
 			}
 		};
 

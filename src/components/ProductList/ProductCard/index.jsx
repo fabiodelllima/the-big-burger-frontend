@@ -12,8 +12,12 @@ export const ProductCard = ({ product, onAddToCart }) => {
 				/>
 			</div>
 			<div className={styles.description}>
-				<h3 className={styles.name}>{product.name}</h3>
-				<span className={styles.category}>{product.category}</span>
+				<h3 className={styles.name}>
+					{product.name}
+				</h3>
+				<span className={styles.category}>
+					{product.category}
+				</span>
 				<span className={styles.price}>
 					{ product.price.toLocaleString('pt-BR', {
 						style: 'currency',
