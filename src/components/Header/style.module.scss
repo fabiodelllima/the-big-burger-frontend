@@ -19,11 +19,17 @@
       width: 100%;
 
       .cartContainer {
-        width: 60px;
-        height: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 64px;
+        height: 64px;
 
         .cartButtonContainer {
           position: relative;
+          display: flex;
+          justify-content: flex-start;
           border: none;
           background-color: transparent;
 
@@ -32,15 +38,9 @@
             filter: brightness(1.1);
           }
 
-          .cartImg {
-            position: absolute;
-            top: 16px;
-            left: 18px;
-          }
-
           .cartQuantity {
             position: absolute;
-            bottom: -3px;
+            bottom: 26px;
             left: 30px;
             font-family: $font-primary;
             font-size: 0.875rem;
@@ -114,7 +114,6 @@
 
       .subContainerA {
         width: 100%;
-        padding-right: 4px;
       }
 
       .subContainerB {
