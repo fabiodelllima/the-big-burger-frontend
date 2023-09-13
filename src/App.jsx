@@ -4,12 +4,12 @@ import { ToastContainer } from 'react-toastify';
 import { HomePage } from './pages/HomePage';
 
 const App = () => {
-	return (
-		<>
-			<HomePage />
-			<ToastContainer />
-		</>
-	);
+  return (
+    <>
+      <HomePage />
+      <ToastContainer />
+    </>
+  );
 };
 
 export default App;
