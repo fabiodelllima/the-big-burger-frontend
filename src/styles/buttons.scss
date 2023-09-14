@@ -23,3 +23,15 @@
     background-color: $color-primary;
   }
 }
+
+.full {
+  height: 40px;
+  width: 100%;
+  color: $white;
+  font-weight: 600;
+  background-color: $grey-400;
+
+  &:hover {
+    background-color: $color-primary;
+  }
+}
