@@ -2,7 +2,7 @@ import styles from './style.module.scss';
 import { useState } from 'react';
 import { MdSearch } from 'react-icons/md';
 import Cart from '../../assets/cart.svg';
-import Logo from '../../assets/Logo.svg';
+import Logo from '../../assets/Logo.png';
 
 export const Header = ({
   onCartButtonClick,
@@ -20,19 +20,21 @@ export const Header = ({
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.subContainerA}>
-          <div className={styles.imgContainer}>
-            <img src={Logo} alt='Logo Kenzie Burguer' />
+          <div className={styles.logoContainer}>
+            <img className={styles.logo} src={Logo} />
           </div>
           <div className={styles.cartContainer}>
-            <button
-              className={styles.cartButtonContainer}
-              onClick={onCartButtonClick}
-            >
-              <img className={styles.cartImg} src={Cart} />
-              <span className={styles.cartQuantity}>
-                {cartQuantity}
-              </span>
-            </button>
+            <div className={styles.cartSubContainer}>
+              <button
+                className={styles.cartButtonContainer}
+                onClick={onCartButtonClick}
+              >
+                <img className={styles.cartImg} src={Cart} />
+                <span className={styles.cartQuantity}>
+                  {cartQuantity}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
         <div className={styles.subContainerB}>
