@@ -24,17 +24,15 @@ export const Header = ({
             <img className={styles.logo} src={Logo} />
           </div>
           <div className={styles.cartContainer}>
-            <div className={styles.cartSubContainer}>
-              <button
-                className={styles.cartButtonContainer}
-                onClick={onCartButtonClick}
-              >
-                <img className={styles.cartImg} src={Cart} />
-                <span className={styles.cartQuantity}>
-                  {cartQuantity}
-                </span>
-              </button>
-            </div>
+            <button
+              className={styles.cartButtonContainer}
+              onClick={onCartButtonClick}
+            >
+              <img className={styles.cartImg} src={Cart} />
+              <span className={styles.cartQuantity}>
+                {cartQuantity}
+              </span>
+            </button>
           </div>
         </div>
         <div className={styles.subContainerB}>
@@ -47,7 +45,6 @@ export const Header = ({
               type='text'
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder='Digitar Pesquisa'
             />
             <button
               className={styles.searchButton}

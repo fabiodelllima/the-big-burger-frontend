@@ -15,7 +15,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
       width: 100%;
 
       .logoContainer {
@@ -27,12 +27,13 @@
         }
       }
 
-      .cartSubContainer {
+      .cartContainer {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        width: 66px;
-        height: 64px;
+        align-items: flex-start;
+        width: 68px;
+        height: 103px;
 
         .cartButtonContainer {
           position: relative;
@@ -63,10 +64,6 @@
     }
 
     .subContainerB {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
       width: 100%;
 
       .formContainer {
@@ -117,19 +114,26 @@
     }
   }
 
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 1000px) {
     .container {
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-end;
       padding: 0 20px;
 
       .subContainerA {
         width: 100%;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .cartContainer {
+          width: 70px;
+        }
       }
 
       .subContainerB {
-        width: 100%;
+        min-width: 400px;
+        max-width: 400px;
       }
     }
   }
