@@ -5,6 +5,7 @@ import { CartItemCard } from './CartItemCard';
 export const CartModal = ({
   cartList,
   onClose,
+  addItem,
   onRemoveItem,
   removeAllItems,
 }) => {
@@ -32,6 +33,7 @@ export const CartModal = ({
               <CartItemCard
                 key={product.id}
                 product={product}
+                addItem={addItem}
                 onRemoveItem={onRemoveItem}
                 totalValue={totalValue}
               />

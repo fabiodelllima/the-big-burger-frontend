@@ -20,7 +20,7 @@
     }
   }
 
-  .subcontainer {
+  .subContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -31,6 +31,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 8px 0;
 
       .title {
         @extend .heading-3;
@@ -49,16 +50,49 @@
         }
       }
     }
-  }
 
-  .quantityContainer {
-    display: flex;
-    justify-content: flex-start;
+    .quantityContainer {
+      display: flex;
+      flex-direction: row;
 
-    .quantityTitle,
-    .quantity {
-      @extend .body;
-      padding-right: 4px;
+      .actualQuantityContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 30px;
+
+        .quantity {
+          @extend .body;
+          font-weight: 900;
+        }
+      }
+
+      .quantityDecreaseContainer {
+        height: 30px;
+        width: 30px;
+      }
+
+      .quantityIncreaseContainer {
+        height: 30px;
+        width: 30px;
+      }
+
+      .quantityButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 30px;
+        border: none;
+        border-radius: 8px;
+        background-color: $quantity-primary;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $quantity-secondary;
+        }
+      }
     }
   }
 }
