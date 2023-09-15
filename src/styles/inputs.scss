@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+.input {
+  font-family: $font-primary;
+  color: $grey-100;
+  font-weight: 400;
+  font-size: 1rem;
+  border: none;
+  outline-color: transparent;
+
+  &::placeholder {
+    color: $grey-100;
+    border: none;
+    outline-color: transparent;
+  }
+
+  &:focus {
+    color: $grey-300;
+    border: none;
+    outline-color: transparent;
+  }
+}

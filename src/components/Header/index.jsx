@@ -1,29 +1,63 @@
-import { useState } from "react";
-import Logo from "../../assets/Logo.svg";
-import { MdSearch, MdShoppingCart } from "react-icons/md";
+import styles from './style.module.scss';
+import { useState } from 'react';
+import { MdSearch } from 'react-icons/md';
+import Cart from '../../assets/cart.svg';
+import Logo from '../../assets/Logo.png';
 
-export const Header = () => {
-   const [value, setValue] = useState("");
+export const Header = ({
+  onCartButtonClick,
+  cartQuantity,
+  setSearch,
+}) => {
+  const [value, setValue] = useState('');
 
-   return (
-      <header>
-         <img src={Logo} alt="Logo Kenzie Burguer" />
-         <div>
-            <button>
-                <MdShoppingCart size={21} />
-                <span>0</span>
+  const updateProductList = (e) => {
+    e.preventDefault();
+    setSearch(value);
+  };
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <div className={styles.subContainerA}>
+          <div className={styles.logoContainer}>
+            <img className={styles.logo} src={Logo} />
+          </div>
+          <div className={styles.cartContainer}>
+            <div className={styles.cartSubContainer}>
+              <button
+                className={styles.cartButtonContainer}
+                onClick={onCartButtonClick}
+              >
+                <img className={styles.cartImg} src={Cart} />
+                <span className={styles.cartQuantity}>
+                  {cartQuantity}
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className={styles.subContainerB}>
+          <form
+            className={styles.formContainer}
+            onSubmit={updateProductList}
+          >
+            <input
+              className={styles.searchInput}
+              type='text'
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              placeholder='Digitar Pesquisa'
+            />
+            <button
+              className={styles.searchButton}
+              type='submit'
+            >
+              <MdSearch size={21} />
             </button>
-            <form>
-               <input
-                  type="text"
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-               />
-               <button type="submit">
-                 <MdSearch size={21} />
-               </button>
-            </form>
-         </div>
-      </header>
-   );
+          </form>
+        </div>
+      </div>
+    </header>
+  );
 };

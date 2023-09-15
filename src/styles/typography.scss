@@ -1,0 +1,45 @@
+@import './variables.scss';
+
+.heading-1 {
+  font-family: $font-primary;
+  font-weight: 900;
+  font-size: 1.625rem;
+}
+
+.heading-2 {
+  font-family: $font-primary;
+  font-weight: 900;
+  font-size: 1.375rem;
+}
+
+.heading-3 {
+  font-family: $font-primary;
+  font-weight: 900;
+  font-size: 1.125rem;
+}
+
+.headline {
+  font-family: $font-primary;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.body {
+  font-family: $font-primary;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: $grey-300;
+}
+
+.body-600 {
+  font-family: $font-primary;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: $color-primary;
+}
+
+.caption {
+  font-family: $font-primary;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
