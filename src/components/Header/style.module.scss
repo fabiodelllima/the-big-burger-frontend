@@ -20,7 +20,7 @@
 
       .logoContainer {
         margin-bottom: 4px;
-        padding-left: 4px;
+        padding-left: 6px;
 
         .logo {
           height: 100px;
@@ -74,7 +74,7 @@
         height: 60px;
         margin: 0 auto;
         border-radius: 8px;
-        border: 2px solid $grey-100;
+        border: 2px solid $grey-200;
         background-color: $white;
       }
 
@@ -104,11 +104,12 @@
         color: $white;
         border-radius: 8px;
         border: 2px solid $color-primary;
-        background: $color-primary;
+        background-color: $color-primary;
+        transition: background-color 0.3s;
 
         &:hover {
           cursor: pointer;
-          filter: brightness(1.1);
+          background-color: $color-secondary;
         }
       }
     }
@@ -125,6 +126,10 @@
         width: 100%;
         justify-content: space-between;
         align-items: flex-end;
+
+        .logoContainer {
+          padding-left: 15px;
+        }
 
         .cartContainer {
           width: 75px;
