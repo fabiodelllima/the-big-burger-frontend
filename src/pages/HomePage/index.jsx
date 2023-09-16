@@ -10,16 +10,9 @@ import { ProductList } from '../../components/ProductList';
 export const HomePage = () => {
   const [productList, setProductList] = useState([]);
   const [cartList, setCartList] = useState([]);
-  const [isVisible, setIsVisible] = useState(false);
   const [search, setSearch] = useState('');
-
-  const handleCartButtonClick = () => {
-    setIsVisible(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsVisible(false);
-  };
+  const [isCartModalVisible, setIsCartModalVisible] =
+    useState(false);
 
   const toastConfig = {
     position: 'top-right',
@@ -96,7 +89,7 @@ export const HomePage = () => {
     localStorage.setItem('cartList', JSON.stringify(cartList));
   }, [cartList]);
 
-  const total = cartList.reduce((prevValue, product) => {
+  const totalValue = cartList.reduce((prevValue, product) => {
     return prevValue + product.price * product.quantity;
   }, 0);
 
@@ -132,7 +125,7 @@ export const HomePage = () => {
   return (
     <>
       <Header
-        onCartButtonClick={handleCartButtonClick}
+        onCartButtonClick={() => setIsCartModalVisible(true)}
         cartQuantity={cartQuantity}
         setSearch={setSearch}
       />
@@ -143,14 +136,14 @@ export const HomePage = () => {
           }
           onAddToCart={handleAddToCart}
         />
-        {isVisible ? (
+        {isCartModalVisible ? (
           <CartModal
             cartList={cartList}
-            onClose={handleCloseModal}
-            addItem={handleIncrementItemQuantity}
+            onClose={() => setIsCartModalVisible(false)}
+            onAddItem={handleIncrementItemQuantity}
             onRemoveItem={handleDecrementItemQuantity}
-            removeAllItems={handleRemoveAllItems}
-            total={total}
+            onRemoveAllItems={handleRemoveAllItems}
+            total={totalValue}
           />
         ) : null}
       </main>
