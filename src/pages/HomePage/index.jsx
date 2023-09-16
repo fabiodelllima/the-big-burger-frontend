@@ -80,12 +80,14 @@ export const HomePage = () => {
   };
 
   const handleRemoveAllItems = () => {
-    const toastMsg = 'Não há produtos para remover do carrinho';
+    const successMsg = 'Os produtos foram removidos do carrinho';
+    const errorMsg = 'Não há produtos para remover do carrinho';
 
     if (cartList.length === 0) {
-      toast.error(toastMsg, toastConfig);
+      toast.error(errorMsg, toastConfig);
     } else {
       setCartList([]);
+      toast.success(successMsg, toastConfig);
     }
   };
 
