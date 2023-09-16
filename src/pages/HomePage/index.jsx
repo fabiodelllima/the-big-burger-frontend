@@ -14,6 +14,11 @@ export const HomePage = () => {
   const [isCartModalVisible, setIsCartModalVisible] =
     useState(false);
 
+  const [cartList, setCartList] = useState(() => {
+    const storedCartList = localStorage.getItem('cartList');
+    return storedCartList ? JSON.parse(storedCartList) : [];
+  });
+
   const toastConfig = {
     position: 'top-right',
     autoClose: 2 * 1000,
@@ -121,6 +126,10 @@ export const HomePage = () => {
       setCartList(JSON.parse(storedCartList));
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartList', JSON.stringify(cartList));
+  }, [cartList]);
 
   return (
     <>
