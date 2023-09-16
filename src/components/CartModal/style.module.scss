@@ -58,7 +58,7 @@
   height: 280px;
   background-color: $white;
   overflow: auto;
-  scrollbar-color: $grey-100 $grey-400;
+  scrollbar-color: $grey-200 $grey-400;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -103,19 +103,9 @@
     }
 
     .removeButton {
-      @extend .default;
-      border: none;
-      width: 100%;
+      @extend .full;
       height: 60px;
       border-radius: 8px;
-      background-color: $grey-400;
-      transition: background-color 0.3s;
-
-      &:hover {
-        cursor: pointer;
-        color: $white;
-        background-color: $color-primary;
-      }
     }
   }
 }
