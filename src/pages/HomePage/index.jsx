@@ -1,5 +1,5 @@
-import styles from './style.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import styles from './style.module.scss';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { productsApi } from '../../services/api';
@@ -9,7 +9,6 @@ import { ProductList } from '../../components/ProductList';
 
 export const HomePage = () => {
   const [productList, setProductList] = useState([]);
-  const [cartList, setCartList] = useState([]);
   const [search, setSearch] = useState('');
   const [isCartModalVisible, setIsCartModalVisible] =
     useState(false);
@@ -90,23 +89,25 @@ export const HomePage = () => {
     }
   };
 
-  useEffect(() => {
-    localStorage.setItem('cartList', JSON.stringify(cartList));
-  }, [cartList]);
+  const calculateTotalValue = cartList.reduce(
+    (prevValue, product) => {
+      return prevValue + product.price * product.quantity;
+    },
+    0
+  );
 
-  const totalValue = cartList.reduce((prevValue, product) => {
-    return prevValue + product.price * product.quantity;
-  }, 0);
+  const calculateCartQuantity = cartList.reduce(
+    (prevValue, product) => {
+      return prevValue + product.quantity;
+    },
+    0
+  );
 
   const filteredProductList = productList.filter((product) => {
     return product.name
       .toLowerCase()
       .includes(search.toLowerCase());
   });
-
-  const cartQuantity = cartList.reduce((prevValue, product) => {
-    return prevValue + product.quantity;
-  }, 0);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -135,7 +136,7 @@ export const HomePage = () => {
     <>
       <Header
         onCartButtonClick={() => setIsCartModalVisible(true)}
-        cartQuantity={cartQuantity}
+        cartQuantity={calculateCartQuantity}
         setSearch={setSearch}
       />
       <main className={styles.container}>
@@ -152,7 +153,7 @@ export const HomePage = () => {
             onAddItem={handleIncrementItemQuantity}
             onRemoveItem={handleDecrementItemQuantity}
             onRemoveAllItems={handleRemoveAllItems}
-            total={totalValue}
+            total={calculateTotalValue}
           />
         )}
       </main>
