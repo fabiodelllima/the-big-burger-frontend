@@ -9,15 +9,10 @@
 
   .button {
     @extend .full;
-    color: $white;
-    border: none;
-    border-radius: 8px;
-    background-color: $grey-400;
-    transition: background-color 0.3s;
 
     &:hover {
       cursor: pointer;
-      filter: brightness(1.1);
+      filter: brightness(1.0);
     }
   }
 
@@ -25,10 +20,9 @@
     border: 2px solid $color-primary;
 
     .button {
-      background-color: $color-primary;
+      filter: brightness(1.1);
     }
   }
-
 
   .imgContainer {
     display: flex;

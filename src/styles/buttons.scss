@@ -4,11 +4,15 @@
   height: 60px;
   width: 130px;
   color: $white;
+  border: none;
+  border-radius: 8px;
   font-weight: 600;
-  background-color: $grey-400;
+  background-color: $color-primary;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: $color-primary;
+    cursor: pointer;
+    background-color: $color-secondary;
   }
 }
 
@@ -16,11 +20,15 @@
   height: 40px;
   width: 130px;
   color: $white;
+  border: none;
+  border-radius: 8px;
   font-weight: 600;
-  background-color: $grey-400;
+  background-color: $color-primary;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: $color-primary;
+    cursor: pointer;
+    background-color: $color-secondary;
   }
 }
 
@@ -28,10 +36,14 @@
   height: 40px;
   width: 100%;
   color: $white;
+  border: none;
+  border-radius: 8px;
   font-weight: 600;
-  background-color: $grey-400;
+  background-color: $color-primary;
+  transition: background-color 0.3s;
 
   &:hover {
-    background-color: $color-primary;
+    cursor: pointer;
+    background-color: $color-secondary;
   }
 }

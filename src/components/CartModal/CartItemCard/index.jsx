@@ -3,7 +3,7 @@ import TrashCan from '../../../assets/trash-can.svg';
 
 export const CartItemCard = ({
   product,
-  addItem,
+  onAddItem,
   onRemoveItem,
 }) => {
   return (
@@ -35,7 +35,7 @@ export const CartItemCard = ({
             <div className={styles.quantityIncreaseContainer}>
               <button
                 className={styles.quantityButton}
-                onClick={() => addItem(product)}
+                onClick={() => onAddItem(product)}
               >
                 +
               </button>

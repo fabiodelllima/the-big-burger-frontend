@@ -5,9 +5,9 @@ import { CartItemCard } from './CartItemCard';
 export const CartModal = ({
   cartList,
   onClose,
-  addItem,
+  onAddItem,
   onRemoveItem,
-  removeAllItems,
+  onRemoveAllItems,
 }) => {
   const totalValue = cartList.reduce((prevValue, product) => {
     return prevValue + product.price * product.quantity;
@@ -33,7 +33,7 @@ export const CartModal = ({
               <CartItemCard
                 key={product.id}
                 product={product}
-                addItem={addItem}
+                onAddItem={onAddItem}
                 onRemoveItem={onRemoveItem}
                 totalValue={totalValue}
               />
@@ -53,7 +53,7 @@ export const CartModal = ({
             </div>
             <button
               className={styles.removeButton}
-              onClick={removeAllItems}
+              onClick={onRemoveAllItems}
             >
               Remover todos
             </button>
