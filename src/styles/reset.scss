@@ -16,7 +16,7 @@ html {
     overflow: auto;
     scrollbar-width: thin;
     scroll-behavior: smooth;
-    scrollbar-color: $grey-100 $grey-400;
+    scrollbar-color: $grey-100 $color-primary;
 
     &::-webkit-scrollbar {
       width: 8px;
@@ -27,8 +27,8 @@ html {
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: $grey-400;
-      border: 5px solid $grey-0;
+      background-color: $color-primary;
+      border: 3px solid $grey-0;
       border-radius: 20px;
     }
 
