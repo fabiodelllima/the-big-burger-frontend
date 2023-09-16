@@ -31,7 +31,7 @@ export const HomePage = () => {
     theme: 'colored',
   };
 
-  const addToCart = (product) => {
+  const handleAddToCart = (product) => {
     const isProductInCart = cartList.some(
       (item) => item.id === product.id
     );
@@ -41,77 +41,60 @@ export const HomePage = () => {
         ...cartList,
         { ...product, quantity: 1 },
       ];
+
       setCartList(updatedCart);
-      localStorage.setItem(
-        'cartList',
-        JSON.stringify(updatedCart)
-      );
     } else {
       const updatedCart = cartList.map((item) =>
         item.id === product.id
           ? { ...item, quantity: item.quantity + 1 }
           : item
       );
+
       setCartList(updatedCart);
-      localStorage.setItem(
-        'cartList',
-        JSON.stringify(updatedCart)
-      );
     }
   };
 
-  const addItem = (product) => {
+  const handleIncrementItemQuantity = (product) => {
     const updatedCart = cartList.map((item) => {
       return item.id === product.id
         ? { ...item, quantity: item.quantity + 1 }
         : item;
     });
+
     setCartList(updatedCart);
-    localStorage.setItem(
-      'cartList',
-      JSON.stringify(updatedCart)
-    );
   };
 
-  const removeFromCart = (product) => {
+  const handleDecrementItemQuantity = (product) => {
     if (product.quantity === 1) {
       const updatedCart = cartList.filter(
         (item) => item.id !== product.id
       );
+
       setCartList(updatedCart);
-      localStorage.setItem(
-        'cartList',
-        JSON.stringify(updatedCart)
-      );
     } else {
       const updatedCart = cartList.map((item) => {
         return item.id === product.id
           ? { ...item, quantity: item.quantity - 1 }
           : item;
       });
+
       setCartList(updatedCart);
-      localStorage.setItem(
-        'cartList',
-        JSON.stringify(updatedCart)
-      );
     }
   };
 
-  const removeAllItems = () => {
+  const handleRemoveAllItems = () => {
+    const toastMsg = 'Não há produtos para remover do carrinho';
+
     if (cartList.length === 0) {
-      toast.error(
-        'Não há produtos para remover do carrinho',
-        toastConfig
-      );
+      toast.error(toastMsg, toastConfig);
     } else {
       setCartList([]);
-      localStorage.removeItem('cartList');
-      toast.success(
-        'Todos os produtos foram removidos do carrinho',
-        toastConfig
-      );
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem('cartList', JSON.stringify(cartList));
+  }, [cartList]);
 
   const total = cartList.reduce((prevValue, product) => {
     return prevValue + product.price * product.quantity;
@@ -158,15 +141,15 @@ export const HomePage = () => {
           productList={
             search === '' ? productList : filteredProductList
           }
-          onAddToCart={addToCart}
+          onAddToCart={handleAddToCart}
         />
         {isVisible ? (
           <CartModal
             cartList={cartList}
             onClose={handleCloseModal}
-            addItem={addItem}
-            onRemoveItem={removeFromCart}
-            removeAllItems={removeAllItems}
+            addItem={handleIncrementItemQuantity}
+            onRemoveItem={handleDecrementItemQuantity}
+            removeAllItems={handleRemoveAllItems}
             total={total}
           />
         ) : null}
