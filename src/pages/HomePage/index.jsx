@@ -136,7 +136,7 @@ export const HomePage = () => {
           }
           onAddToCart={handleAddToCart}
         />
-        {isCartModalVisible ? (
+        {isCartModalVisible && (
           <CartModal
             cartList={cartList}
             onClose={() => setIsCartModalVisible(false)}
@@ -145,7 +145,7 @@ export const HomePage = () => {
             onRemoveAllItems={handleRemoveAllItems}
             total={totalValue}
           />
-        ) : null}
+        )}
       </main>
     </>
   );
