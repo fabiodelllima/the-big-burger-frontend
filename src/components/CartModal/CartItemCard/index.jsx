@@ -1,5 +1,4 @@
 import styles from './style.module.scss';
-import TrashCan from '../../../assets/trash-can.svg';
 
 export const CartItemCard = ({
   product,
@@ -19,7 +18,7 @@ export const CartItemCard = ({
         <div className={styles.titleContainer}>
           <h3 className={styles.title}>{product.name}</h3>
           <div className={styles.quantityContainer}>
-            <div className={styles.quantityDecreaseContainer}>
+            <div className={styles.decrementQuantityContainer}>
               <button
                 className={styles.quantityButton}
                 onClick={() => onRemoveItem(product)}
@@ -32,7 +31,7 @@ export const CartItemCard = ({
                 {product.quantity}
               </span>
             </div>
-            <div className={styles.quantityIncreaseContainer}>
+            <div className={styles.incrementQuantityContainer}>
               <button
                 className={styles.quantityButton}
                 onClick={() => onAddItem(product)}
