@@ -10,6 +10,7 @@
 
   .button {
     @extend .full;
+    transition: 0.3s;
 
     &:hover {
       cursor: pointer;
