@@ -30,11 +30,13 @@
     .titleContainer {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       padding: 8px 0;
 
       .title {
         @extend .heading-3;
+        font-size: clamp(1rem, 2vw, 1.125rem);
+        padding-top: 6px;
       }
 
       .removeItemButton {
@@ -53,7 +55,8 @@
 
     .quantityContainer {
       display: flex;
-      flex-direction: row;
+      flex-direction: column-reverse;
+      padding-left: 10px;
 
       .actualQuantityContainer {
         display: flex;
@@ -93,6 +96,11 @@
           cursor: pointer;
           background-color: $quantity-secondary;
         }
+      }
+
+      @media only screen and (min-width: 600px) {
+        display: flex;
+        flex-direction: row;
       }
     }
   }
