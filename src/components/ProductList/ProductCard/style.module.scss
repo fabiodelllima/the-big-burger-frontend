@@ -6,6 +6,7 @@
   min-width: 300px;
   border-radius: 5px;
   border: 2px solid $grey-100;
+  transition: 0.3s;
 
   .button {
     @extend .full;
